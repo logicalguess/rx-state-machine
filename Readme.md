@@ -66,7 +66,17 @@ Even though we are not doing it here, it may make sense to handle the rendering 
         });
 
 Stately.js manages state in an object-oriented manner, but exposes a fluent API where each transition method returns
-the state machine itself.
+the state machine itself. This allows a more functional implementation, where the state is represented by a second
+stream:
+
+    Rx.Observable.return(door).combineLatest(events, transition).map(doorStatus)
+        .subscribe(function (value) {
+            view.render(value)
+        });
+
+In a more DCI-like implementation we could just store state in this property and
+make the event stream publish transition functions (similar to the _become_ feature in Akka actors.)
+
 
 With this approach testing is also simplified, as we can create sequences of synthetic events and just watch the
 browser run in front of our eyes:

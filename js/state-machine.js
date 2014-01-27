@@ -94,6 +94,12 @@ var doorStatus = function (door) {
 
 var events = Rx.Observable.return('close').concat(view.onEvent());
 
+
+//Rx.Observable.return(door).combineLatest(events, transition).map(doorStatus)
+//    .subscribe(function (value) {  console.log('called', value)
+//        view.render(value)
+//    });
+
 events.scan(door, transition).map(doorStatus)
     .subscribe(function (value) {
         view.render(value);
