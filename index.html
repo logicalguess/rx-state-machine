@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Reactive State Machine</title>
+    <link rel="stylesheet" type="text/css" href="http://semantic-ui.com/build/packaged/css/semantic.css">
+
+    <script src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
+    <script src="http://semantic-ui.com/build/packaged/javascript/semantic.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js"></script>
+
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/rxjs/2.2.10/rx.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/rxjs/2.2.10/rx.binding.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/rxjs/2.2.10/rx.time.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/rxjs-dom/2.0.7/rx.dom.js"></script>
+
+    <script src="lib/Stately.js"></script>
+
+    <script type="text/x-handlebars" data-template-name="state">
+         <div class="ui top left attached blue label">State</div>
+         <div id="state" class="ui ribbon teal label">{{this}}</div>
+    </script>
+
+    <script type="text/x-handlebars" data-template-name="event-list">
+        {{#each events}}
+            <a class="action ui button"><i class="{{this.css}} icon"></i>{{this.name}}</a>
+        {{/each}}
+    </script>
+
+</head>
+<body>
+<h2>State Machine with Bacon</h2>
+
+<div class="ui three column grid">
+    <div class="row">
+        <div class="column">
+            <div id="state" class="ui raised segment">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <div class="ui raised segment">
+                <div class="ui top left attached blue label">Events</div>
+                <div id="events" class="ui labeled vertical fluid icon">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/state-machine.js"></script>
+</body>
+
+
+</html>
+
