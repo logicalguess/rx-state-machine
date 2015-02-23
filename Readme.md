@@ -37,7 +37,8 @@ avoid mixing unrelated concerns.
         },
         onEvent: function() {
             return click("#events").map(function(ev) {
-                return ev.target.text.toLocaleLowerCase().trim();
+                var text = ev.target.text || ev.target.parentNode.text
+                return text.toLocaleLowerCase().trim();
             });
         }
     };
